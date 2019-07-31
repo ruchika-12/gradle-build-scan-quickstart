@@ -1,6 +1,7 @@
 
 plugins {
     id 'java'
+    id 'jacoco'
 }
 
 repositories {
@@ -10,4 +11,16 @@ repositories {
 dependencies {
     compile 'com.google.guava:guava:23.0'
     testCompile 'junit:junit:4.12'
+}
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination file("${buildDir}/jacocoHtml")
+    }
+}
+
+jacoco {
+    toolVersion = "0.8.4"
+    reportsDir = file("$buildDir/customJacocoReportDir")
 }
